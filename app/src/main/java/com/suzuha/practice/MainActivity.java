@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     String[] Nation = {"", "United State", "Japan", "Canada"};
     DataBase dataBase = new DataBase(MainActivity.this);
     private Uri selectedImage;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         uiElement();
+
+        intent = new Intent(MainActivity.this, MainActivity2.class);
 
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Nation);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -99,8 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 Show.Toast(this, "Select your gender");
             } else if (Nationality.getSelectedItemPosition() == 0) {
                 Show.Toast(this, "Select your country");
+            } else if (!Agree.isChecked()){
+                Show.Toast(this, "Please agree to term to register");
             }
         });
+
+        (findViewById(R.id.btDatabase)).setOnClickListener(view -> startActivity(intent));
     }
 
     @Override
