@@ -58,9 +58,9 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteClient(String name) {
+    public void deleteClient(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, "name=?", new String[]{name});
+        db.delete(TABLE_NAME, "email=?", new String[]{email});
         db.close();
     }
 

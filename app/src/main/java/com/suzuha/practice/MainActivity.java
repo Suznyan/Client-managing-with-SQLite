@@ -97,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
                         genderGetter(),
                         Nationality.getSelectedItem().toString());
                 Show.Toast(this, "Client Added");
+                PFP.setImageURI(null);
+                Name.setText("");
+                Email.setText("");
+                Password.setText("");
+                RePassword.setText("");
+                Genders.clearCheck();
+                Nationality.setSelection(0);
+                Agree.setChecked(false);
             } else if (!RePassword.getText().toString().equals(Password.getText().toString())) {
                 PwCheck.setText("Re enter password");
             } else if (Genders.getCheckedRadioButtonId() == -1) {
