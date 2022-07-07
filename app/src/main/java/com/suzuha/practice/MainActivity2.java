@@ -57,6 +57,8 @@ public class MainActivity2 extends AppCompatActivity implements ExampleDialog.Ex
                         .setPositiveButton("Yes", ((dialogInterface, i) -> {
                             dataBase.deleteClient(al_Client.get(position).getEmail());
                             adapter.notifyItemRemoved(position);
+                            finish();
+                            startActivity(getIntent());
                         }))
                         .show();
             }
